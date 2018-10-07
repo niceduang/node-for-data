@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>留言</title>
+    <link rel="stylesheet" href="/public/css/main.css">
+</head>
+<body>
+    <form action="/discuss" method="get">
+        <br>您的姓名：
+        <input type="text" name="name" id="user-name">
+        <br>
+        <br>
+        <br>留言内容：
+        <textarea name="msg" id="val" cols="30" rows="10"></textarea>
+        <a href="/" class="link-btn">返回首页</a>
+        <!-- <a href="/discuss?name=duang&msg=hi" class="link-btn">发表留言</a> -->
+        <input type="submit" value="发表留言" id="btn-submit" class="link-btn">
+    </form>
+    <script src="/public/js/main.js"></script>
+</body>
+</html>

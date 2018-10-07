@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/public/css/main.css">
+</head>
+
+<body>
+    <img src="/public/img/duang.jpg" alt="" class="logo">
+    <ul class="items">
+        {{each students}}
+        <li data-index="{{$index}}" data-id="{{$value.id}}">
+            <p class="name">{{$value.name}}</p>
+            <p class="age">{{$value.age}}</p>
+            <p class="time">{{$value.time}}</p>
+            <span class="edit">edit</span>
+            <span class="del">X</span>
+        </li>
+        {{/each}}
+    </ul>
+    <a href="/add" class="btn">添加成员</a>
+</body>
+
+</html>

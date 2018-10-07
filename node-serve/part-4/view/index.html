@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>留言板</title>
+    <link rel="stylesheet" href="/public/css/main.css">
+</head>
+
+<body>
+    <h1 class="tit">
+        {{title}}
+    </h1>
+    <img src="/public/img/pic.jpg" alt="" class="logo">
+    <ul id="items">
+        {{each contents}}
+        <li data-index='{{$index}}'>
+            <p>{{$value.msg}}</p>
+            <span class="user">{{$value.name}}</span>
+            <span class="time">{{$value.time}}</span>
+        </li>
+        {{/each}}
+    </ul>
+    <a href="/post" class="link-btn">去留言</a>
+    <script src="/public/js/main.js"></script>
+</body>
+
+</html>
