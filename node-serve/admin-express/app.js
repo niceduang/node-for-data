@@ -25,5 +25,5 @@ app.use(router)
 
 
 app.listen(3000, () => {
-    console.log('server start...')
+    console.log('server is starting at 3000')
 })

@@ -46,17 +46,14 @@ router.get('/add', (req, res) => {
 router.post('/add', (req, res) => {
     console.log(req.body)
     let student = req.body
-    student.id = 110
-    student.time = new Date().toLocaleString()
-    res.send(student)
-
-    // fs.writeFile('./db.json',(err,data)=>{
-    //     if(err){
-    //         return res.send('404 Not Found')
-    //     }
-    //     // 
-    //     // res.redirect(302, '/')
-    // })
+    dbHandle.save(student, (err) => {
+        if (err) {
+            return res.status(500).send('Server error.')
+        }
+        console.log('存储成功')
+        res.redirect(302, '/')
+        // res.send(student)
+    })
 })
 router.post('/', (req, res) => {
     res.send('post ok')

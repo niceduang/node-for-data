@@ -4,23 +4,43 @@
  */
 const fs = require('fs')
 
-const dbPath = './db.json'
+const dbpath = './db.json'
 /**
  * 获取所有列表
  */
-exports.find = (callback)=>{
-    fs.readFile(dbPath,'utf8',(err,data)=>{
+exports.find = (callback) => {
+    fs.readFile(dbpath, 'utf8', (err, data) => {
         if (err) {
-            callback && callback(err)
+            return callback && callback(err)
         }
-        callback && callback(null,JSON.parse(data).students)
+        callback && callback(null, JSON.parse(data).students)
     })
 }
 /**
  * 添加保存
  */
+exports.save = (student, callback) => {
+    fs.readFile(dbpath, 'utf8', (err, data) => {
+        if (err) {
+            return callback && callback(err)
+        }
+        let students = JSON.parse(data).students
+        student.id = students[students.length - 1].id + 1
+        student.time = new Date().toLocaleString()
+        students.push(student)
+        let fileData = JSON.stringify({
+            students
+        })
+        fs.writeFile(dbpath, fileData, (err) => {
+            if (err) {
+                return callback && callback(err)
+            }
+            callback(null)
+        })
+    })
+}
 /**
- * 更新
+ * 编辑更新
  */
 /**
  * 删除
