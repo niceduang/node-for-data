@@ -42,6 +42,29 @@ exports.save = (student, callback) => {
 /**
  * 编辑更新
  */
+exports.edit = (student, callback) => {
+    fs.readFile(dbpath, 'utf8', (err, data) => {
+        if (err) {
+            return callback(err)
+        }
+        let students = JSON.parse(data).students
+
+        let findStudent = students.find((item) => {
+            return item.id === student.id
+        })
+        Object.assign(findStudent, student)
+
+        let fileData = JSON.stringify({
+            students
+        })
+        fs.writeFile(dbpath, fileData, (err) => {
+            if (err) {
+                return callback && callback(err)
+            }
+            callback(null)
+        })
+    })
+}
 /**
  * 删除
  */
