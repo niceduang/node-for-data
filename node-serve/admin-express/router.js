@@ -33,6 +33,7 @@ router.get('/', (req, res) => {
   })
 })
 router.get('/add', (req, res) => {
+  console.log(req.query)
   res.render('add.html', { title: '学生后台管理-添加成员' }, (err, data) => {
     if (err) {
       return res.send('404 Not Found!')
